@@ -4,29 +4,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<main id="main" class="">
+<main id="main" >
     
+<div class="row">
     <div class="pagetitle">
         <h1>Data Tables</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="breadcrumb-item active">Product</li>
-                
-               
             </ol>
-          
         </nav>
     </div>
-    <section class="section">
+     <div>
+            <!-- Large Modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">
+                Add Product
+            </button>
+
+
+    </div>
+  
+</div>
+<div class="row">
         <div class="row">
             <div class="col-lg-12">
 
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title" style="float:left">Product</h3>
-                        @* <button style="float:right">Add</button> *@
-                        <br /><br/>
+                        <h3 class="card-title">Product</h3>
+          
+                   
                         <table class="table datatable table-hover">
                             <thead>
                                 <tr>
@@ -50,10 +58,10 @@
                                     <td>@pro.ProductCategory</td>
                                     <td>@pro.ProductStock</td>
                                     <td>
-                                       <button>Update</button>
+                                        <button type="button" class="btn btn-success">Update</button>
                                     </td>
                                     <td>
-                                        <button>Delete</button>
+                                        <button type="button" class="btn btn-danger ">Delete</button>
                                     </td>
                                 </tr>
                             }
@@ -67,7 +75,7 @@
 
             </div>
         </div>
-</section>
+</div>
 </main>
 @section scripts{
 
