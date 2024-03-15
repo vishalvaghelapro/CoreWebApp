@@ -106,6 +106,10 @@ namespace CoreWebApp
                     pattern: "{controller=Charts}/{action=Charts}"
                     );
                     endpoints.MapControllerRoute(
+                    name: "AddProduct",
+                    pattern: "{controller=Product}/{action=AddProduct}"
+                    );
+                    endpoints.MapControllerRoute(
                     name: "Productlist",
                     pattern: "{controller=Product}/{action=Productlist}"
                     );
