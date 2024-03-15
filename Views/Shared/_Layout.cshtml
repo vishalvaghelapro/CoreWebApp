@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+      <!-- Favicons -->
+    <link href="~/assets/img/favicon.png" rel="icon">
+    <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+  <link href="~/assets/vendor/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet"/>
+  <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+  <link href="~/assets/vendor/quill//quill.bubble.css" rel="stylesheet" />
+  <link href="~/assets/vendor/quill/quill.snow.css" rel="stylesheet" />
+  <link href="~/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+  <link href="~/assets/vendor/simple-datatables/style.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+   <link href="~/assets/css/style.css" rel="stylesheet" />
+    @* <link rel="stylesheet" href="~/CoreWebApp.styles.css" asp-append-version="true" /> *@
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="/Home/Home" class="logo d-flex align-items-center">
+                @* <img src="assets/img/desotologo.png alt=""> *@
+                <span class="d-none d-lg-block">De Soto technologies</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
+
+        <div class="search-bar">
+            <form class="search-form d-flex align-items-center" method="POST" action="#">
+                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+            </form>
+        </div><!-- End Search Bar -->
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link nav-icon search-bar-toggle " href="#">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </li><!-- End Search Icon-->
+                
+            @*         @if (User.IsSignedIn())
+                    {
+                        <div>@User.GetUserName()</div>
+                        <form method="post" asp-controller="Account" aspcontroller="Logout">
+                            <input type="submit" value="Logout" />
+                        </form>
+                    }
+                    else
+                    {
+                        <a asp-controller="Account" asp-action="Login">Login</a>
+                        <a asp-controller="Account" asp-action="Register">Register</a>
+                    }
+             *@    
+      
+                <li class="nav-item dropdown pe-3">
+
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                     @*    <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> *@
+                        <span class="d-none d-md-block dropdown-toggle ps-2">Vishal Vaghela</span>
+                    </a><!-- End Profile Iamge Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6>Vishal Vaghela</h6>
+                            <span>Web Designer</span>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                <i class="bi bi-person"></i>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <form class="dropdown-item d-flex align-items-center" action="@Url.Action("Logout", "Core")" method="post">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <button type="submit" class="bg-transparent border-0">Logout</button>
+                            </form>
+                        </li>
+
+                    </ul><!-- End Profile Dropdown Items -->
+                </li><!-- End Profile Nav -->
+
+            </ul>
+        </nav><!-- End Icons Navigation -->
+
+    </header><!-- End Header -->
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link " href="/Home/Home">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <!-- End Dashboard Nav -->
+                <li class="nav-item">
+                <a class="nav-link " href="/Product/Productlist">
+                    <i class="bi bi-grid"></i>
+                    <span>Product</span>
+                </a>
+            </li><!-- End Product Nav -->
+            <li class="nav-item">
+                <a class="nav-link " href="/Charts/Charts">
+                    <i class="bi bi-grid"></i>
+                    <span>Charts</span>
+                </a>
+            </li><!-- End Charts Nav -->
+            <li class="nav-item">
+                <a class="nav-link " href="/Customer/Customer">
+                    <i class="bi bi-grid"></i>
+                    <span>Customer</span>
+                </a>
+            </li><!-- End Customer Nav -->
+        </ul>
+
+        <footer class="fixed-bottom border-top" style="background: #f6f9ff">
+            <div class="container">
+                &copy; 2024 - De Soto Technologies
+            </div>
+        </footer>
+    </aside><!-- End Sidebar-->
+        <main>
+            @RenderBody()
+        </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/js/core.js" asp-append-version="true"></script>
+    <script src="~/assets/js/main.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

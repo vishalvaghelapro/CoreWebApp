@@ -1,0 +1,55 @@
+﻿@model CoreWebApp.Models.Loginuser;
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="pt-xxl-5">
+    <div class="container h-6 pt-5">
+        <div class="row d-flex justify-content-end">
+            @* <div class="coL col-xl-10"> *@
+            <div class="col-12">
+                <div class="card m-y p-4" style="border-radius: 1rem;">
+                    <div class="row">
+                        <div class="col-md-4 col-4 d-none d-md-block">
+                            <img src="~/accet/desktop-wallpaper-iphone-spiritual-background-cool-spiritual.jpg"
+                                 alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                        </div>
+                        <div class="col-md-3 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+
+                                <form asp-controller="Core" asp-action="Login">
+
+                                    <div class="d-flex justify-content-center mb-4 pb-1">
+                                        <i class="fas fa-cubes fa-2x" style="color: #ff6219;"></i>
+                                        <span class="h1 fw-bold mb-0"><img src="~/accet/desotologo.png" /></span>
+                                    </div>
+
+                                    <div class="col-md-10">
+                                        <input asp-for="Username" type="text" class="form-control" id="validationCustom01" value="" placeholder="Firstname Lastname" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-md-10">
+                                        <input asp-for="Password" type="password" class="form-control" id="validationCustom01" value="" placeholder="password" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-1">
+                                        <button type="submit" class="btn btn-dark btn-m">Login</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

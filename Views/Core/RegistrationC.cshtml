@@ -1,0 +1,99 @@
+﻿@model CoreWebApp.Models.User;
+@{
+    // ViewData["Title"] = "Registration";
+    // Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="vh-20 pt-xxl-5">
+    <div class="container h-89 pt-xxl-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11 pt-xxl-5">
+                <div class="card text-black pt-xxl-5" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                <h2 class="text-md-left" style="margin-bottom: 20px;">
+                                    Sign Up
+                                </h2>
+                               @*  <h3>@ViewBag.Result</h3> *@
+
+                               @*  <form asp-controller="Core" asp-action="Registration" class="row g-3 needs-validation" novalidate> *@
+                                <form asp-controller="Core" asp-action="Registration">
+                                    <div class="col-md-10">
+                                        <input asp-for="FirstName" type="text" class="form-control" id="validationCustom01" value="" placeholder="Firstname" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+
+                                    </div>
+                                    <br />
+                                    <div class="col-md-10">
+
+                                        <input asp-for="LastName" type="text" class="form-control" id="validationCustom01" value="" placeholder="Lastname" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-md-10">
+                                        <input asp-for="Email" type="text" class="form-control" id="validationCustom01" value="" placeholder="Email" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-md-10">
+
+                                        <input asp-for="Password" type="password" class="form-control" id="validationCustom01" value="" placeholder="Password" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+
+                                    <br />
+                                    <div class="col-md-10">
+                                    <input asp-for="Date" type="date" class="form-control" id="date" name="date" placeholder="Date"
+                                           data-val="true"
+                                           data-val-at-least-18="You must be at least 18 years old to register." />
+                                    </div>
+                                    <div class="text-danger">@ViewData["message"]</div>
+                                    <br />
+                                    <div class="col-md-10">
+                                        <button type="submit" class="btn btn-dark btn-m">Submit</button>
+                                    </div>
+                                    
+                                </form>
+                                @* @if (ViewBag.AlertMessage != null)
+                                {
+                                    <div class="alert alert-success" role="alert">
+                                        @ViewBag.AlertMessage
+                                    </div>
+                                } *@
+
+                            </div>
+
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                <img src="~/accet/ganes-1.jpg"
+                                     class="img-fluid border-success" alt="Sample image" style="border:5px;border-block-color:black;border-radius: 25px;">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+@*     <script src="~/js/core.js" asp-append-version="true"></script> *@
+  @*   @if(ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () { 
+                alert("@ViewBag.Message")
+            }
+        </script>
+    } *@
+}
