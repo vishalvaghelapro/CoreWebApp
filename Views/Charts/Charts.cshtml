@@ -26,24 +26,49 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Product Pie Chart</h5>
-
-                    <!-- Pie Chart -->
+                    @*                 <!-- Pie Chart -->
                     <div id="pieChart"></div>
 
                     <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#pieChart"), {
+                    series: [44, 55, 13, 43, 22],
+
+                    chart: {
+                    height: 350,
+                    type: 'pie',
+                    toolbar: {
+                    show: true
+                    }
+                    },
+                    labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E']
+                    }).render();
+                    });
+                    </script>
+                    <!-- End Pie Chart --> *@
+                    <!-- Pie Chart -->
+                    <div id="pieChart"></div>
+                    <script>
                         document.addEventListener("DOMContentLoaded", () => {
                             new ApexCharts(document.querySelector("#pieChart"), {
+                                //         series: [
+                                // @ViewBag.ProductStock[0],
+                                // @ViewBag.ProductStock[1],
+                                // @ViewBag.ProductStock[2]],
+                       
+
                                 series: [
-                        @ViewBag.CategoryStocks[0],
-                        @ViewBag.CategoryStocks[1],
-                        @ViewBag.CategoryStocks[2],
-                        @ViewBag.CategoryStocks[3],
-                        @ViewBag.CategoryStocks[4],
-                        @ViewBag.CategoryStocks[5],
-                        @ViewBag.CategoryStocks[6],
-                        @ViewBag.CategoryStocks[7],
-                        @ViewBag.CategoryStocks[8]],
-                                chart: {
+                        @for (int i = 0; i < ViewBag.ProductStock.Length; i++)
+                        {
+                            @ViewBag.ProductStock[i];
+                            
+                            i++;
+                        }
+                        ],
+
+
+                                chart:
+                                {
                                     height: 350,
                                     type: 'pie',
                                     toolbar: {
@@ -51,19 +76,70 @@
                                     }
                                 },
 
-                                labels: ['@ViewBag.ProductCategoryNames[0]',
-                                    '@ViewBag.ProductCategoryNames[1]',
-                                    '@ViewBag.ProductCategoryNames[2]',
-                                    '@ViewBag.ProductCategoryNames[3]',
-                                    '@ViewBag.ProductCategoryNames[4]',
-                                    '@ViewBag.ProductCategoryNames[5]',
-                                    '@ViewBag.ProductCategoryNames[6]',
-                                    '@ViewBag.ProductCategoryNames[7]',
-                                    '@ViewBag.ProductCategoryNames[8]']
+                                labels: ['@ViewBag.ProductCategory[0]',
+                                    '@ViewBag.ProductCategory[1]',
+                                    '@ViewBag.ProductCategory[2]']
+
 
                             }).render();
                         });
                     </script>
+                    @*  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#pieChart"), {
+                    series: [
+                    @ViewBag.ProductStock[0],
+                    @ViewBag.ProductStock[1]],
+
+                    chart: {
+                    height: 350,
+                    type: 'pie',
+                    toolbar: {
+                    show: true
+                    }
+                    },
+
+                    labels: ['@ViewBag.ProductCategory[0]',
+                    '@ViewBag.ProductCategory[1]']
+
+
+                    }).render();
+                    });
+                    </script> *@
+                    @*   <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#pieChart"), {
+                    const series = []
+
+                    series.forEach((item, index) => {
+                    // Do something with each item and its index
+                    console.log(`Item at index ${index}: ${item}`);
+                    });
+
+                    //const series = [];
+
+                    // for(let i = 0; i<ViewBag.ProductStock.length; i++)
+                    //     {
+                    //         series.push(ViewBag.ProductStock[i]);
+                    //     }
+
+                    // series: [@ViewBag.ProductStock[0],
+                    //    @ViewBag.ProductStock[1]],
+                    chart: {
+                    height: 350,
+                    type: 'pie',
+                    toolbar: {
+                    show: true
+                    }
+                    },
+
+                    labels: ['@ViewBag.ProductCategory[0]',
+                    '@ViewBag.ProductCategory[1]', '@ViewBag.ProductCategory[2]']
+
+
+                    }).render();
+                    });
+                    </script> *@
 
                 </div>
             </div>
@@ -76,17 +152,17 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/chart.js/chart.umd.js"></script>
-    <script src="assets/vendor/echarts/echarts.min.js"></script>
-    <script src="assets/vendor/quill/quill.min.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="~/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="~/assets/vendor/quill/quill.min.js"></script>
+    <script src="~/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="~/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="~/assets/js/main.js"></script>
 
 
 

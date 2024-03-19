@@ -35,7 +35,8 @@
                                     <th>Address</th>
                                     <th>Birthdate</th>
                                     <th>Password</th>
-                                    <th>IsDelete</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             @foreach (var pro in ViewBag.customer)
@@ -49,7 +50,12 @@
                                     <td>@pro.Address</td>
                                     <td>@pro.Birthdate</td>
                                     <td>@pro.Password</td>
-                                    <td>@pro.IsDelete</td>
+                                    <td>
+                                        <button type="button" class="btn btn-success">Update</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger ">Delete</button>
+                                    </td>
                                 </tr> 
                             } 
                             <tbody>

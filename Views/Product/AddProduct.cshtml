@@ -1,6 +1,6 @@
 ﻿@model CoreWebApp.Models.Product;
 @{
-    ViewData["Title"] = "AddProduct";
+    ViewData["Title"] = "";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <main id="main">
@@ -11,7 +11,7 @@
                 <h5 class="card-title">Add Product</h5>
 
                 <!-- Vertical Form -->
-                <form asp-controller="Product" asp-action="AddProduct" class="row g-3">
+                <form asp-controller="Product" asp-action="SaveProduct" class="row g-3">
                     
                     <div class="col-12">
                         <label for="inputNanme4" class="form-label">Name</label>

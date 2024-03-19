@@ -14,17 +14,17 @@ namespace CoreWebApp.Controllers
             Configuration = configuration;
         }
         [Authorize]
-        public IActionResult Charts(ProductCategory productCategory)
+        public IActionResult Charts(Product product)
         {
 
             SqlConnection conn = new SqlConnection(Configuration.GetConnectionString("DefaultConnection"));
-            List<ProductCategory> lst = new List<ProductCategory>();
+            List<Product> lst = new List<Product>();
             SqlCommand cmd = conn.CreateCommand();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
 
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "TotalCategorysp";
+            cmd.CommandText = "CategoryStockCharts";
 
             conn.Open();
             da.Fill(dt);
@@ -33,22 +33,22 @@ namespace CoreWebApp.Controllers
             foreach (DataRow dr in dt.Rows)
             {
                 lst.Add(
-                    new ProductCategory
+                    new Product
                     { 
-                        ProductCategoryId = Convert.ToInt32(dr["ProductCategoryId"]),
-                        ProductCategoryName = Convert.ToString(dr["ProductCategoryName"]),
-                        ProductCategoryStock = Convert.ToString(dr["ProductCategoryStock"])
+                        ProductCategory = Convert.ToString(dr["ProductCategory"]),
+                        ProductStock = Convert.ToString(dr["ProductStock"]),
+
                     });
             }
-            ProductCategory[] productCategoryArray = lst.ToArray();
-            int[] productCategoryIds = productCategoryArray.Select(x => x.ProductCategoryId).ToArray();
-            string[] productCategoryNames = productCategoryArray.Select(x => x.ProductCategoryName).ToArray();
-            string[] productCategoryStocks = productCategoryArray.Select(x => x.ProductCategoryStock).ToArray();
+            Product[] productArray = lst.ToArray();
 
-            ViewBag.ProductCategoryIds = productCategoryIds;
-            ViewBag.ProductCategoryNames = productCategoryNames;
-            ViewBag.CategoryStocks = productCategoryStocks;
-            // ViewBag.productCategory = lst;
+            string[] productCategoryNames = productArray.Select(x => x.ProductCategory).ToArray();
+            string[] productStock = productArray.Select(x => x.ProductStock).ToArray();
+
+
+            ViewBag.ProductCategory = productCategoryNames;
+            ViewBag.ProductStock = productStock;
+
             return View();
         }
     }

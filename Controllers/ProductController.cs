@@ -15,8 +15,8 @@ namespace CoreWebApp.Controllers
         {
             Configuration = configuration;
         }
-        [Authorize]
-            public IActionResult Productlist(Product product)
+
+        public IActionResult Productlist(Product product)
             {
 
                 SqlConnection conn = new SqlConnection(Configuration.GetConnectionString("DefaultConnection"));
@@ -48,51 +48,24 @@ namespace CoreWebApp.Controllers
                 ViewBag.product = lst;
                 return View();
             }
-        public IActionResult AddProduct(Product product) 
+   
+        public IActionResult AddProduct(Product product)
         {
-            SqlConnection conn = new SqlConnection(Configuration.GetConnectionString("DefaultConnection"));
-            List<Product> lst = new List<Product>();
-            SqlCommand cmd = conn.CreateCommand();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
 
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "InsertData";
-
-            cmd.Parameters.AddWithValue("@ProductName", product.ProductName);
-            cmd.Parameters.AddWithValue("@ProductDesc", product.ProductDesc);
-            cmd.Parameters.AddWithValue("@ProductPrice", product.ProductPrice);
-            cmd.Parameters.AddWithValue("@ProductCategory", product.ProductCategory);
-            cmd.Parameters.AddWithValue("@ProductStock", product.ProductStock);
-
-
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            conn.Open();
-            cmd.ExecuteNonQuery();
-
-
-            conn.Close();
-
-            // return Ok("Data is saved successfully.");
-            return View();
-        }
-        public IActionResult AddProduct()
-        {
             SqlConnection conn = new SqlConnection(Configuration.GetConnectionString("DefaultConnection"));
             List<Product> categories = new List<Product>();
             SqlCommand catCmd = conn.CreateCommand();
             catCmd.CommandType = CommandType.Text;
-            catCmd.CommandText = "Select DISTINCT ProductCategory from Product;"; // Replace with your query
+            catCmd.CommandText = "Select ProductCategoryName from ProductCategory;"; // Replace with your query
 
             conn.Open();
             SqlDataReader reader = catCmd.ExecuteReader();
             while (reader.Read())
             {
                 categories.Add(
-                    new Product 
+                    new Product
                     {
-                        ProductCategory = Convert.ToString(reader["ProductCategory"]) 
+                        ProductCategory = Convert.ToString(reader["ProductCategoryName"])
                     });
             }
             reader.Close();
@@ -102,6 +75,35 @@ namespace CoreWebApp.Controllers
             ViewBag.categories = categories;
             return View();
         }
-        
+
+        public IActionResult SaveProduct(Product product)
+        {
+            SqlConnection conn = new SqlConnection(Configuration.GetConnectionString("DefaultConnection"));
+            List<Product> lst = new List<Product>();
+            SqlCommand cmd = conn.CreateCommand();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "InsertProduct";
+
+            cmd.Parameters.AddWithValue("@ProductName", product.ProductName);
+            cmd.Parameters.AddWithValue("@ProductDesc", product.ProductDesc);
+            cmd.Parameters.AddWithValue("@ProductPrice", product.ProductPrice);
+            cmd.Parameters.AddWithValue("@ProductCategory", product.ProductCategory);
+            cmd.Parameters.AddWithValue("@ProductStock", product.ProductStock);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            conn.Open();
+            cmd.ExecuteNonQuery();
+
+
+            conn.Close();
+
+
+            return RedirectToAction("Productlist", "Product");
+
+        }
+
     }
 }
